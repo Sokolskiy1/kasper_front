@@ -14,7 +14,9 @@ interface InterfaceResult {
     columns: []
     count: number | undefined
 }
-const endpoint_url = `http://127.0.0.1:8000/items/gg`
+const apiUrl = process.env.REACT_APP_API_URL;
+console.log(apiUrl)
+const endpoint_url = `${apiUrl}items/gg`
 export const fetchData = async (params: interfaceFetchGetList): Promise<InterfaceResult> => {
     const urlParams = new URLSearchParams();
 
@@ -40,6 +42,7 @@ export const fetchData = async (params: interfaceFetchGetList): Promise<Interfac
         method: 'GET',
         headers: {
             'Accept': 'application/json',
+            'Content-Type': 'application/json',  // Добавьте это
         },})
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

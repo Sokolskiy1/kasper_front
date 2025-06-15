@@ -56,6 +56,7 @@ export class ListStore {
         // this.loadData();
         this.debouncedLoadData();
     }
+    
     private debouncedLoadData = debounce(() => {
         this.loadData();
     }, 300);
